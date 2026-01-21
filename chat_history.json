@@ -1,0 +1,835 @@
+{
+  "sessions": [
+    {
+      "id": "89c37ace-6a29-4511-b1d4-55ac73cbe721",
+      "createdAt": 1768896768179,
+      "title": "New Chat",
+      "transcript": "1. What “Offboarding” Means at Capitec  At Capitec Bank, offboarding is not a single event (e.g. “close account”), but a controlled lifecycle transition where the bank terminates or restricts a client relationship while ensuring:  No unmanaged credit exposure  Regulatory compliance (FICA, NCA, POPIA, SARB prudential standards)  Consistent, fair client treatment  Data, funds, and obligations are lawfully resolved  There are two fundamentally different offboarding paths:  A. Client with NO active credit  B. Client WITH active credit (personal or business) ← this is the high-risk path  Your earlier risk statement correctly identifies that Path B is the real problem area.  2. Offboarding Triggers (How the Process Starts)  Offboarding at Capitec is trigger-driven, not voluntary in most cases.  Primary trigger categories 2.1 Client-initiated  Client requests account closure  Emigration / death / insolvency  Business closure (Business Bank)  2.2 Bank-initiated (risk-driven)  FICA non-compliance (expired or failed KYC)  Fraud or financial crime indicators  Sanctions / AML flags  Misuse of products  Reputational or regulatory risk  2.3 Credit-driven triggers  Persistent delinquency  Default or legal escalation  Debt review / sequestration  Credit agreement termination events  Key point: Once credit exists, offboarding is legally constrained. The bank cannot simply “exit” the client.  3. Client Segmentation Before Offboarding  Before any action, Capitec segments the client:  Dimension\tWhy it matters Product mix\tTransactional vs loan vs overdraft vs credit card Credit status\tPerforming / delinquent / default Legal status\tDebt review, deceased estate, business liquidation Risk flags\tFraud, AML, sanctions Portfolio\tPersonal Bank vs Business Bank  This segmentation determines what Capitec is legally allowed to do next.  4. Offboarding WITHOUT Credit (Low Complexity)  If the client has no active credit facilities:  Step-by-step  Balance settlement  Account must be zeroed (positive or negative)  Pending items cleared  Debits, stop orders, card transactions  Product closures  Cards, savings pockets, access channels  Data retention  Account closed but data retained per law  Relationship terminated  This path is clean, fast, and well-controlled.  5. Offboarding WITH Credit (High Risk, High Constraint)  This is where the real complexity and your identified risk live.  5.1 Core legal reality  Under South African law:  A credit agreement survives account closure  The bank must continue to service, collect, and administer the loan  The bank cannot orphan the client relationship  Therefore:  Capitec cannot “offboard” a credit client in the normal sense. It can only transition them into a restricted, credit-centric relationship state.  6. What Actually Happens: Managed Restriction Model  Instead of full exit, Capitec applies a Managed Exit / Restricted State (even if not formally named as such).  6.1 Transactional capability is reduced  Cards may be cancelled  Digital banking access restricted  Incoming funds may be limited or ring-fenced  6.2 Credit remains fully active  Loan continues under original contract  Statements must still be issued  Payment mechanisms must remain available  Collections, legal, or restructuring processes continue  6.3 Client is no longer “commercially active”  No upsell  No new products  No discretionary services  This creates a zombie relationship:  Not an active client, not fully exited.  7. Credit-Specific Exit Scenarios 7.1 Loan fully repaid  Credit agreement closes  Client becomes eligible for full offboarding  Normal closure process resumes  7.2 Legal resolution  Debt written off  Judgment settled  Insolvency finalised  Only after one of these events can Capitec fully terminate the relationship.  8. Data, Compliance, and Audit Controls  Even after offboarding:  Client data is retained per statutory timelines  Credit records remain reportable to bureaus  Audit trails must remain intact  Regulator access must be supporte",
+      "model": {
+        "process_name": "Capitec Client Offboarding Process",
+        "actors": [
+          "Capitec Bank",
+          "Client"
+        ],
+        "steps": [
+          {
+            "id": "S1",
+            "type": "start",
+            "actor": "Capitec Bank",
+            "description": "Offboarding process initiated.",
+            "next": [
+              "A1"
+            ]
+          },
+          {
+            "id": "A1",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Identify offboarding triggers (Client-initiated, Bank-initiated, Credit-driven).",
+            "next": [
+              "A2"
+            ]
+          },
+          {
+            "id": "A2",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Segment client (product mix, credit status, legal status, risk flags, portfolio) to determine legal allowance.",
+            "next": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D1",
+            "type": "decision",
+            "actor": "Capitec Bank",
+            "description": "Does the client have active credit facilities?",
+            "next": [
+              "A3",
+              "A4"
+            ]
+          },
+          {
+            "id": "A3",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Apply Managed Restriction Model (reduce transactional capability, credit remains active, client no longer commercially active).",
+            "next": [
+              "D2"
+            ]
+          },
+          {
+            "id": "D2",
+            "type": "decision",
+            "actor": "Capitec Bank",
+            "description": "Has the credit been fully repaid or legally resolved (e.g., written off, judgment settled, insolvency finalised)?",
+            "next": [
+              "A6"
+            ]
+          },
+          {
+            "id": "A6",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Close credit agreement.",
+            "next": [
+              "A7"
+            ]
+          },
+          {
+            "id": "A7",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Resume normal offboarding steps (product closures, data management).",
+            "next": [
+              "E2"
+            ]
+          },
+          {
+            "id": "E2",
+            "type": "end",
+            "actor": "Capitec Bank",
+            "description": "Relationship terminated and client data retained per statutory timelines (post-credit resolution).",
+            "next": []
+          },
+          {
+            "id": "A4",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Settle account balances (zeroed) and clear pending items (debits, stop orders, card transactions).",
+            "next": [
+              "A5"
+            ]
+          },
+          {
+            "id": "A5",
+            "type": "action",
+            "actor": "Capitec Bank",
+            "description": "Close all associated products (cards, savings pockets, access channels).",
+            "next": [
+              "E1"
+            ]
+          },
+          {
+            "id": "E1",
+            "type": "end",
+            "actor": "Capitec Bank",
+            "description": "Relationship terminated and client data retained per statutory timelines (no active credit).",
+            "next": []
+          }
+        ]
+      },
+      "turns": [
+        {
+          "id": "3df4b862-576a-4916-8e03-b5e852deaac0",
+          "user": {
+            "versions": [
+              {
+                "id": "765cf500-052c-4b6f-a132-a5bc411dc1a8",
+                "content": "1. What “Offboarding” Means at Capitec  At Capitec Bank, offboarding is not a single event (e.g. “close account”), but a controlled lifecycle transition where the bank terminates or restricts a client relationship while ensuring:  No unmanaged credit exposure  Regulatory compliance (FICA, NCA, POPIA, SARB prudential standards)  Consistent, fair client treatment  Data, funds, and obligations are lawfully resolved  There are two fundamentally different offboarding paths:  A. Client with NO active credit  B. Client WITH active credit (personal or business) ← this is the high-risk path  Your earlier risk statement correctly identifies that Path B is the real problem area.  2. Offboarding Triggers (How the Process Starts)  Offboarding at Capitec is trigger-driven, not voluntary in most cases.  Primary trigger categories 2.1 Client-initiated  Client requests account closure  Emigration / death / insolvency  Business closure (Business Bank)  2.2 Bank-initiated (risk-driven)  FICA non-compliance (expired or failed KYC)  Fraud or financial crime indicators  Sanctions / AML flags  Misuse of products  Reputational or regulatory risk  2.3 Credit-driven triggers  Persistent delinquency  Default or legal escalation  Debt review / sequestration  Credit agreement termination events  Key point: Once credit exists, offboarding is legally constrained. The bank cannot simply “exit” the client.  3. Client Segmentation Before Offboarding  Before any action, Capitec segments the client:  Dimension\tWhy it matters Product mix\tTransactional vs loan vs overdraft vs credit card Credit status\tPerforming / delinquent / default Legal status\tDebt review, deceased estate, business liquidation Risk flags\tFraud, AML, sanctions Portfolio\tPersonal Bank vs Business Bank  This segmentation determines what Capitec is legally allowed to do next.  4. Offboarding WITHOUT Credit (Low Complexity)  If the client has no active credit facilities:  Step-by-step  Balance settlement  Account must be zeroed (positive or negative)  Pending items cleared  Debits, stop orders, card transactions  Product closures  Cards, savings pockets, access channels  Data retention  Account closed but data retained per law  Relationship terminated  This path is clean, fast, and well-controlled.  5. Offboarding WITH Credit (High Risk, High Constraint)  This is where the real complexity and your identified risk live.  5.1 Core legal reality  Under South African law:  A credit agreement survives account closure  The bank must continue to service, collect, and administer the loan  The bank cannot orphan the client relationship  Therefore:  Capitec cannot “offboard” a credit client in the normal sense. It can only transition them into a restricted, credit-centric relationship state.  6. What Actually Happens: Managed Restriction Model  Instead of full exit, Capitec applies a Managed Exit / Restricted State (even if not formally named as such).  6.1 Transactional capability is reduced  Cards may be cancelled  Digital banking access restricted  Incoming funds may be limited or ring-fenced  6.2 Credit remains fully active  Loan continues under original contract  Statements must still be issued  Payment mechanisms must remain available  Collections, legal, or restructuring processes continue  6.3 Client is no longer “commercially active”  No upsell  No new products  No discretionary services  This creates a zombie relationship:  Not an active client, not fully exited.  7. Credit-Specific Exit Scenarios 7.1 Loan fully repaid  Credit agreement closes  Client becomes eligible for full offboarding  Normal closure process resumes  7.2 Legal resolution  Debt written off  Judgment settled  Insolvency finalised  Only after one of these events can Capitec fully terminate the relationship.  8. Data, Compliance, and Audit Controls  Even after offboarding:  Client data is retained per statutory timelines  Credit records remain reportable to bureaus  Audit trails must remain intact  Regulator access must be supporte",
+                "type": "text",
+                "timestamp": 1768896768180
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "6003a70e-14f2-4b62-9fa5-ae488598a4e4",
+                "content": "{\n  \"process_name\": \"Capitec Client Offboarding Process\",\n  \"actors\": [\n    \"Capitec Bank\",\n    \"Client\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"S1\",\n      \"type\": \"start\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Offboarding process initiated.\",\n      \"next\": [\n        \"A1\"\n      ]\n    },\n    {\n      \"id\": \"A1\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Identify offboarding triggers (Client-initiated, Bank-initiated, Credit-driven).\",\n      \"next\": [\n        \"A2\"\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Segment client (product mix, credit status, legal status, risk flags, portfolio) to determine legal allowance.\",\n      \"next\": [\n        \"D1\"\n      ]\n    },\n    {\n      \"id\": \"D1\",\n      \"type\": \"decision\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Does the client have active credit facilities?\",\n      \"next\": [\n        \"A3\",\n        \"A4\"\n      ]\n    },\n    {\n      \"id\": \"A3\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Apply Managed Restriction Model (reduce transactional capability, credit remains active, client no longer commercially active).\",\n      \"next\": [\n        \"D2\"\n      ]\n    },\n    {\n      \"id\": \"D2\",\n      \"type\": \"decision\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Has the credit been fully repaid or legally resolved (e.g., written off, judgment settled, insolvency finalised)?\",\n      \"next\": [\n        \"A6\"\n      ]\n    },\n    {\n      \"id\": \"A6\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Close credit agreement.\",\n      \"next\": [\n        \"A7\"\n      ]\n    },\n    {\n      \"id\": \"A7\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Resume normal offboarding steps (product closures, data management).\",\n      \"next\": [\n        \"E2\"\n      ]\n    },\n    {\n      \"id\": \"E2\",\n      \"type\": \"end\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Relationship terminated and client data retained per statutory timelines (post-credit resolution).\",\n      \"next\": []\n    },\n    {\n      \"id\": \"A4\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Settle account balances (zeroed) and clear pending items (debits, stop orders, card transactions).\",\n      \"next\": [\n        \"A5\"\n      ]\n    },\n    {\n      \"id\": \"A5\",\n      \"type\": \"action\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Close all associated products (cards, savings pockets, access channels).\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"E1\",\n      \"type\": \"end\",\n      \"actor\": \"Capitec Bank\",\n      \"description\": \"Relationship terminated and client data retained per statutory timelines (no active credit).\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768896768255,
+                "executionDuration": 14922
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 14922
+        }
+      ],
+      "projectId": "9304885d-a62b-4df5-bd42-2dc153e4dac6"
+    },
+    {
+      "id": "98c2934e-5e19-45d4-9574-312becdeb4ad",
+      "createdAt": 1768896398988,
+      "title": "New Chat",
+      "transcript": "1. What “Offboarding” Means at Capitec  At Capitec Bank, offboarding is not a single event (e.g. “close account”), but a controlled lifecycle transition where the bank terminates or restricts a client relationship while ensuring:  No unmanaged credit exposure  Regulatory compliance (FICA, NCA, POPIA, SARB prudential standards)  Consistent, fair client treatment  Data, funds, and obligations are lawfully resolved  There are two fundamentally different offboarding paths:  A. Client with NO active credit  B. Client WITH active credit (personal or business) ← this is the high-risk path  Your earlier risk statement correctly identifies that Path B is the real problem area.  2. Offboarding Triggers (How the Process Starts)  Offboarding at Capitec is trigger-driven, not voluntary in most cases.  Primary trigger categories 2.1 Client-initiated  Client requests account closure  Emigration / death / insolvency  Business closure (Business Bank)  2.2 Bank-initiated (risk-driven)  FICA non-compliance (expired or failed KYC)  Fraud or financial crime indicators  Sanctions / AML flags  Misuse of products  Reputational or regulatory risk  2.3 Credit-driven triggers  Persistent delinquency  Default or legal escalation  Debt review / sequestration  Credit agreement termination events  Key point: Once credit exists, offboarding is legally constrained. The bank cannot simply “exit” the client.  3. Client Segmentation Before Offboarding  Before any action, Capitec segments the client:  Dimension\tWhy it matters Product mix\tTransactional vs loan vs overdraft vs credit card Credit status\tPerforming / delinquent / default Legal status\tDebt review, deceased estate, business liquidation Risk flags\tFraud, AML, sanctions Portfolio\tPersonal Bank vs Business Bank  This segmentation determines what Capitec is legally allowed to do next.  4. Offboarding WITHOUT Credit (Low Complexity)  If the client has no active credit facilities:  Step-by-step  Balance settlement  Account must be zeroed (positive or negative)  Pending items cleared  Debits, stop orders, card transactions  Product closures  Cards, savings pockets, access channels  Data retention  Account closed but data retained per law  Relationship terminated  This path is clean, fast, and well-controlled.  5. Offboarding WITH Credit (High Risk, High Constraint)  This is where the real complexity and your identified risk live.  5.1 Core legal reality  Under South African law:  A credit agreement survives account closure  The bank must continue to service, collect, and administer the loan  The bank cannot orphan the client relationship  Therefore:  Capitec cannot “offboard” a credit client in the normal sense. It can only transition them into a restricted, credit-centric relationship state.  6. What Actually Happens: Managed Restriction Model  Instead of full exit, Capitec applies a Managed Exit / Restricted State (even if not formally named as such).  6.1 Transactional capability is reduced  Cards may be cancelled  Digital banking access restricted  Incoming funds may be limited or ring-fenced  6.2 Credit remains fully active  Loan continues under original contract  Statements must still be issued  Payment mechanisms must remain available  Collections, legal, or restructuring processes continue  6.3 Client is no longer “commercially active”  No upsell  No new products  No discretionary services  This creates a zombie relationship:  Not an active client, not fully exited.  7. Credit-Specific Exit Scenarios 7.1 Loan fully repaid  Credit agreement closes  Client becomes eligible for full offboarding  Normal closure process resumes  7.2 Legal resolution  Debt written off  Judgment settled  Insolvency finalised  Only after one of these events can Capitec fully terminate the relationship.  8. Data, Compliance, and Audit Controls  Even after offboarding:  Client data is retained per statutory timelines  Credit records remain reportable to bureaus  Audit trails must remain intact  Regulator access must be supporte",
+      "model": {
+        "process_name": "Banking Account Onboarding",
+        "actors": [
+          "Customer",
+          "Bank Representative",
+          "System"
+        ],
+        "steps": [
+          {
+            "id": "start_01",
+            "type": "start",
+            "actor": "Customer",
+            "description": "Customer initiates the account opening process (e.g., in-branch, online).",
+            "next": [
+              "action_02"
+            ]
+          },
+          {
+            "id": "action_02",
+            "type": "action",
+            "actor": "Customer",
+            "description": "Customer provides necessary documentation (ID, proof of address) and personal details.",
+            "next": [
+              "action_03"
+            ]
+          },
+          {
+            "id": "action_03",
+            "type": "action",
+            "actor": "Bank Representative",
+            "description": "Bank Representative reviews provided documents, verifies identity, and enters customer data into the system.",
+            "next": [
+              "action_04"
+            ]
+          },
+          {
+            "id": "action_04",
+            "type": "action",
+            "actor": "System",
+            "description": "System performs automated identity verification, compliance checks (AML, KYC), and credit checks.",
+            "next": [
+              "decision_05"
+            ]
+          },
+          {
+            "id": "decision_05",
+            "type": "decision",
+            "actor": "System",
+            "description": "Are all checks successful and is the application approved?",
+            "next": [
+              "action_06",
+              "action_09"
+            ]
+          },
+          {
+            "id": "action_06",
+            "type": "action",
+            "actor": "Bank Representative",
+            "description": "Bank Representative finalizes account setup, assigns account numbers, and prepares welcome documents.",
+            "next": [
+              "action_07"
+            ]
+          },
+          {
+            "id": "action_07",
+            "type": "action",
+            "actor": "Bank Representative",
+            "description": "Bank Representative offers and sets up additional services (e.g., online banking, debit card, mobile app access).",
+            "next": [
+              "action_08"
+            ]
+          },
+          {
+            "id": "action_08",
+            "type": "action",
+            "actor": "Customer",
+            "description": "Customer signs the account agreement and receives the welcome pack with account details.",
+            "next": [
+              "end_success_10"
+            ]
+          },
+          {
+            "id": "end_success_10",
+            "type": "end",
+            "actor": "Customer",
+            "description": "Account Successfully Onboarded.",
+            "next": []
+          },
+          {
+            "id": "action_09",
+            "type": "action",
+            "actor": "Bank Representative",
+            "description": "Bank Representative informs the customer of the application rejection, providing reasons if legally permissible.",
+            "next": [
+              "end_rejection_11"
+            ]
+          },
+          {
+            "id": "end_rejection_11",
+            "type": "end",
+            "actor": "Bank Representative",
+            "description": "Application Rejected.",
+            "next": []
+          }
+        ]
+      },
+      "turns": [
+        {
+          "id": "154ae506-8164-468e-b60a-45bf5bbecf71",
+          "user": {
+            "versions": [
+              {
+                "id": "82a1fcc4-1812-465e-a67f-1176f8e280d0",
+                "content": "Hello hello, hello.",
+                "type": "text",
+                "timestamp": 1768896398989
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "b178f301-f225-468e-a902-4f67bfd15bf2",
+                "content": "Hello there! How can I assist you today?",
+                "type": "text",
+                "timestamp": 1768896399104,
+                "executionDuration": 1560
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 1560
+        },
+        {
+          "id": "e7593e34-229a-4332-b429-776cf70f6dd7",
+          "user": {
+            "versions": [
+              {
+                "id": "2b1460c2-dd19-4c0f-a647-6d1ff48819d9",
+                "content": "explain yout purpose",
+                "type": "text",
+                "timestamp": 1768896416826
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "8de868bb-325a-44a8-a491-7813c43b2cca",
+                "content": "Hello! My purpose is to serve as an expert Business Process Analyst and AI assistant. I can perform two main functions:\n\n1.  **Extract Business Processes:** If you describe a business process, I will analyze it and provide a structured process model in JSON format, complete with actors, steps, and their flow.\n2.  **Answer General Questions:** If you ask a general question, I will provide a helpful and informative response.\n\nMy goal is to help you understand and model business processes efficiently!",
+                "type": "text",
+                "timestamp": 1768896416911,
+                "executionDuration": 2325
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 2325
+        },
+        {
+          "id": "5a09535c-b390-4341-8a65-d9236c2eb985",
+          "user": {
+            "versions": [
+              {
+                "id": "efaaf894-3cc4-4b53-98f4-81bfdc7684d3",
+                "content": "generate a banking onboarding process",
+                "type": "text",
+                "timestamp": 1768896508812
+              },
+              {
+                "id": "c965fb11-cabd-4144-abd8-7d73b13f4f20",
+                "content": "generate a banking onboarding process",
+                "type": "text",
+                "timestamp": 1768896582711
+              }
+            ],
+            "activeIndex": 1
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "0f5ad90a-2fae-4629-b176-8039feab9746",
+                "content": "{\n  \"process_name\": \"Banking Account Onboarding\",\n  \"actors\": [\n    \"Customer\",\n    \"Bank\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"start_01\",\n      \"type\": \"start\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer decides to open a new bank account.\",\n      \"next\": [\n        \"action_01\"\n      ]\n    },\n    {\n      \"id\": \"action_01\",\n      \"type\": \"action\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer completes and submits an account application form (online or in-person).\",\n      \"next\": [\n        \"action_02\"\n      ]\n    },\n    {\n      \"id\": \"action_02\",\n      \"type\": \"action\",\n      \"actor\": \"Bank\",\n      \"description\": \"Bank reviews the application, performs identity verification (KYC), and necessary background/credit checks.\",\n      \"next\": [\n        \"decision_01\"\n      ]\n    },\n    {\n      \"id\": \"decision_01\",\n      \"type\": \"decision\",\n      \"actor\": \"Bank\",\n      \"description\": \"Is the account application approved based on internal policies and verification results?\",\n      \"next\": [\n        \"action_03\",\n        \"action_04\"\n      ]\n    },\n    {\n      \"id\": \"action_03\",\n      \"type\": \"action\",\n      \"actor\": \"Bank\",\n      \"description\": \"Bank informs the customer that their application has been rejected and provides a reason (if permissible).\",\n      \"next\": [\n        \"end_01\"\n      ]\n    },\n    {\n      \"id\": \"action_04\",\n      \"type\": \"action\",\n      \"actor\": \"Bank\",\n      \"description\": \"Bank opens the new account, assigns an account number, and sets up initial services.\",\n      \"next\": [\n        \"action_05\"\n      ]\n    },\n    {\n      \"id\": \"action_05\",\n      \"type\": \"action\",\n      \"actor\": \"Bank\",\n      \"description\": \"Bank prepares and dispatches a welcome kit, including debit card, online banking credentials, and relevant account information.\",\n      \"next\": [\n        \"action_06\"\n      ]\n    },\n    {\n      \"id\": \"action_06\",\n      \"type\": \"action\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer receives the welcome kit, activates the debit card, and sets up online banking access.\",\n      \"next\": [\n        \"end_02\"\n      ]\n    },\n    {\n      \"id\": \"end_01\",\n      \"type\": \"end\",\n      \"actor\": \"Bank\",\n      \"description\": \"Process concludes with the account application rejected.\",\n      \"next\": []\n    },\n    {\n      \"id\": \"end_02\",\n      \"type\": \"end\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer is fully onboarded and can utilize their new bank account services.\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768896509012,
+                "executionDuration": 17835
+              },
+              {
+                "id": "81f8a6cc-0656-4f1a-b2ad-1ae31f286931",
+                "content": "{\n  \"process_name\": \"Banking Account Onboarding\",\n  \"actors\": [\n    \"Customer\",\n    \"Bank Representative\",\n    \"System\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"start_01\",\n      \"type\": \"start\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer initiates the account opening process (e.g., in-branch, online).\",\n      \"next\": [\n        \"action_02\"\n      ]\n    },\n    {\n      \"id\": \"action_02\",\n      \"type\": \"action\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer provides necessary documentation (ID, proof of address) and personal details.\",\n      \"next\": [\n        \"action_03\"\n      ]\n    },\n    {\n      \"id\": \"action_03\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Representative\",\n      \"description\": \"Bank Representative reviews provided documents, verifies identity, and enters customer data into the system.\",\n      \"next\": [\n        \"action_04\"\n      ]\n    },\n    {\n      \"id\": \"action_04\",\n      \"type\": \"action\",\n      \"actor\": \"System\",\n      \"description\": \"System performs automated identity verification, compliance checks (AML, KYC), and credit checks.\",\n      \"next\": [\n        \"decision_05\"\n      ]\n    },\n    {\n      \"id\": \"decision_05\",\n      \"type\": \"decision\",\n      \"actor\": \"System\",\n      \"description\": \"Are all checks successful and is the application approved?\",\n      \"next\": [\n        \"action_06\",\n        \"action_09\"\n      ]\n    },\n    {\n      \"id\": \"action_06\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Representative\",\n      \"description\": \"Bank Representative finalizes account setup, assigns account numbers, and prepares welcome documents.\",\n      \"next\": [\n        \"action_07\"\n      ]\n    },\n    {\n      \"id\": \"action_07\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Representative\",\n      \"description\": \"Bank Representative offers and sets up additional services (e.g., online banking, debit card, mobile app access).\",\n      \"next\": [\n        \"action_08\"\n      ]\n    },\n    {\n      \"id\": \"action_08\",\n      \"type\": \"action\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer signs the account agreement and receives the welcome pack with account details.\",\n      \"next\": [\n        \"end_success_10\"\n      ]\n    },\n    {\n      \"id\": \"end_success_10\",\n      \"type\": \"end\",\n      \"actor\": \"Customer\",\n      \"description\": \"Account Successfully Onboarded.\",\n      \"next\": []\n    },\n    {\n      \"id\": \"action_09\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Representative\",\n      \"description\": \"Bank Representative informs the customer of the application rejection, providing reasons if legally permissible.\",\n      \"next\": [\n        \"end_rejection_11\"\n      ]\n    },\n    {\n      \"id\": \"end_rejection_11\",\n      \"type\": \"end\",\n      \"actor\": \"Bank Representative\",\n      \"description\": \"Application Rejected.\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768896582944,
+                "executionDuration": 11596
+              }
+            ],
+            "activeIndex": 1
+          },
+          "status": "done",
+          "executionDuration": 11596
+        },
+        {
+          "id": "d1d1c86e-8fb5-46e8-b54c-5fcad9b42439",
+          "user": {
+            "versions": [
+              {
+                "id": "697a5e79-81f0-4c94-8915-70234b8b92ae",
+                "content": "1. What “Offboarding” Means at Capitec  At Capitec Bank, offboarding is not a single event (e.g. “close account”), but a controlled lifecycle transition where the bank terminates or restricts a client relationship while ensuring:  No unmanaged credit exposure  Regulatory compliance (FICA, NCA, POPIA, SARB prudential standards)  Consistent, fair client treatment  Data, funds, and obligations are lawfully resolved  There are two fundamentally different offboarding paths:  A. Client with NO active credit  B. Client WITH active credit (personal or business) ← this is the high-risk path  Your earlier risk statement correctly identifies that Path B is the real problem area.  2. Offboarding Triggers (How the Process Starts)  Offboarding at Capitec is trigger-driven, not voluntary in most cases.  Primary trigger categories 2.1 Client-initiated  Client requests account closure  Emigration / death / insolvency  Business closure (Business Bank)  2.2 Bank-initiated (risk-driven)  FICA non-compliance (expired or failed KYC)  Fraud or financial crime indicators  Sanctions / AML flags  Misuse of products  Reputational or regulatory risk  2.3 Credit-driven triggers  Persistent delinquency  Default or legal escalation  Debt review / sequestration  Credit agreement termination events  Key point: Once credit exists, offboarding is legally constrained. The bank cannot simply “exit” the client.  3. Client Segmentation Before Offboarding  Before any action, Capitec segments the client:  Dimension\tWhy it matters Product mix\tTransactional vs loan vs overdraft vs credit card Credit status\tPerforming / delinquent / default Legal status\tDebt review, deceased estate, business liquidation Risk flags\tFraud, AML, sanctions Portfolio\tPersonal Bank vs Business Bank  This segmentation determines what Capitec is legally allowed to do next.  4. Offboarding WITHOUT Credit (Low Complexity)  If the client has no active credit facilities:  Step-by-step  Balance settlement  Account must be zeroed (positive or negative)  Pending items cleared  Debits, stop orders, card transactions  Product closures  Cards, savings pockets, access channels  Data retention  Account closed but data retained per law  Relationship terminated  This path is clean, fast, and well-controlled.  5. Offboarding WITH Credit (High Risk, High Constraint)  This is where the real complexity and your identified risk live.  5.1 Core legal reality  Under South African law:  A credit agreement survives account closure  The bank must continue to service, collect, and administer the loan  The bank cannot orphan the client relationship  Therefore:  Capitec cannot “offboard” a credit client in the normal sense. It can only transition them into a restricted, credit-centric relationship state.  6. What Actually Happens: Managed Restriction Model  Instead of full exit, Capitec applies a Managed Exit / Restricted State (even if not formally named as such).  6.1 Transactional capability is reduced  Cards may be cancelled  Digital banking access restricted  Incoming funds may be limited or ring-fenced  6.2 Credit remains fully active  Loan continues under original contract  Statements must still be issued  Payment mechanisms must remain available  Collections, legal, or restructuring processes continue  6.3 Client is no longer “commercially active”  No upsell  No new products  No discretionary services  This creates a zombie relationship:  Not an active client, not fully exited.  7. Credit-Specific Exit Scenarios 7.1 Loan fully repaid  Credit agreement closes  Client becomes eligible for full offboarding  Normal closure process resumes  7.2 Legal resolution  Debt written off  Judgment settled  Insolvency finalised  Only after one of these events can Capitec fully terminate the relationship.  8. Data, Compliance, and Audit Controls  Even after offboarding:  Client data is retained per statutory timelines  Credit records remain reportable to bureaus  Audit trails must remain intact  Regulator access must be supporte",
+                "type": "text",
+                "timestamp": 1768896737129
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "381815ac-541d-4095-99e0-fc68ed0aaebe",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [503 Service Unavailable] The model is overloaded. Please try again later.",
+                "type": "error",
+                "timestamp": 1768896737316
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "error"
+        }
+      ],
+      "projectId": null
+    },
+    {
+      "id": "9572f1a2-b1c2-4162-9278-daaf65c51fce",
+      "createdAt": 1768587736630,
+      "title": "New Chat",
+      "transcript": "generate a design making process for a point of sale system in a restaurant with 3 starter options,  mains and 2 desserts.",
+      "model": {
+        "process_name": "Restaurant POS Order & Payment Flow",
+        "actors": [
+          "Customer",
+          "Waitstaff",
+          "POS System",
+          "Kitchen"
+        ],
+        "steps": [
+          {
+            "id": "S1",
+            "type": "start",
+            "actor": "Customer",
+            "description": "Customer is seated and ready to order.",
+            "next": [
+              "W1"
+            ]
+          },
+          {
+            "id": "W1",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Takes Customer's order for Starters, Mains, and optionally Desserts (3 Starters, multiple Mains, 2 Desserts available).",
+            "next": [
+              "W2"
+            ]
+          },
+          {
+            "id": "W2",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Enters all chosen items into the POS System.",
+            "next": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D1",
+            "type": "decision",
+            "actor": "Waitstaff",
+            "description": "Is the order confirmed by Customer and ready to be sent to the Kitchen?",
+            "next": [
+              "P1",
+              "W3"
+            ]
+          },
+          {
+            "id": "W3",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Makes necessary modifications to the order in the POS System (e.g., adding/removing items, changing quantities).",
+            "next": [
+              "D1"
+            ]
+          },
+          {
+            "id": "P1",
+            "type": "action",
+            "actor": "POS System",
+            "description": "Sends the confirmed order details to the Kitchen Display System (KDS) or printer.",
+            "next": [
+              "K1"
+            ]
+          },
+          {
+            "id": "K1",
+            "type": "action",
+            "actor": "Kitchen",
+            "description": "Prepares the food items according to the order.",
+            "next": [
+              "W4"
+            ]
+          },
+          {
+            "id": "W4",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Serves prepared courses to the Customer as they are ready.",
+            "next": [
+              "W5"
+            ]
+          },
+          {
+            "id": "W5",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Generates the bill from the POS System upon Customer's request.",
+            "next": [
+              "W6"
+            ]
+          },
+          {
+            "id": "W6",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Presents the bill to the Customer.",
+            "next": [
+              "C1"
+            ]
+          },
+          {
+            "id": "C1",
+            "type": "action",
+            "actor": "Customer",
+            "description": "Provides payment for the bill.",
+            "next": [
+              "W7"
+            ]
+          },
+          {
+            "id": "W7",
+            "type": "action",
+            "actor": "Waitstaff",
+            "description": "Processes payment through the POS System (e.g., cash, card).",
+            "next": [
+              "P2"
+            ]
+          },
+          {
+            "id": "P2",
+            "type": "action",
+            "actor": "POS System",
+            "description": "Records the transaction, updates inventory, and closes the order.",
+            "next": [
+              "E1"
+            ]
+          },
+          {
+            "id": "E1",
+            "type": "end",
+            "actor": "Customer",
+            "description": "Customer leaves the restaurant.",
+            "next": []
+          }
+        ]
+      },
+      "turns": [
+        {
+          "id": "72df994c-7d68-4d62-b813-b7f3bb305915",
+          "user": {
+            "versions": [
+              {
+                "id": "c1df3e93-226d-4535-9baf-0c90e5847ef1",
+                "content": "explain your purpose",
+                "type": "text",
+                "timestamp": 1768587736630
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "e3fb7d21-8a16-42da-9de5-8ba4d4ef459a",
+                "content": "I am an AI assistant designed to help you with two main tasks:\n\n1.  **Extracting and modeling business processes:** If you provide me with a description of a business process, I can analyze it and represent it in a structured format (like BPMN or a similar flowchart logic) including the process name, actors involved, and a sequence of steps (start, action, decision, end). This helps in understanding, analyzing, and optimizing how work gets done.\n\n2.  **Answering general questions:** I can also provide helpful information and explanations on a wide range of topics, acting as a knowledge base.",
+                "type": "text",
+                "timestamp": 1768587736862,
+                "executionDuration": 2320
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 2320
+        },
+        {
+          "id": "3a16ea68-ef3f-47ef-a1a0-093b8914e2ba",
+          "user": {
+            "versions": [
+              {
+                "id": "ca4801a1-ceae-4c3c-b656-9c5ba7333537",
+                "content": "generate a business process for a credit application for a banking",
+                "type": "text",
+                "timestamp": 1768587840508
+              },
+              {
+                "id": "5aae14a5-f6b7-4322-bb47-560ffb9b782b",
+                "content": "generate a business process for a credit application for a banking",
+                "type": "text",
+                "timestamp": 1768587910472
+              },
+              {
+                "id": "2c5a7bd9-2e97-4de8-a9d0-3d20bd988bc5",
+                "content": "generate a business process for a credit application for a banking",
+                "type": "text",
+                "timestamp": 1768588376929
+              },
+              {
+                "id": "a44b0e91-16a9-478d-a5cc-9dedd25a0fdb",
+                "content": "generate a business process for a credit application for a banking",
+                "type": "text",
+                "timestamp": 1768588541588
+              },
+              {
+                "id": "d0ceefc2-99c0-4fd0-b22b-161fe3a7b3a0",
+                "content": "generate a business process for a credit application for a banking",
+                "type": "text",
+                "timestamp": 1768588669782
+              }
+            ],
+            "activeIndex": 4
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "0a8b1691-7359-4489-be1a-f9e935a43d2a",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\nPlease retry in 59.199015031s. [{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"model\":\"gemini-2.5-flash-lite\",\"location\":\"global\"},\"quotaValue\":\"20\"}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"59s\"}]",
+                "type": "error",
+                "timestamp": 1768587840792
+              },
+              {
+                "id": "f2f858a5-44f9-4f78-8177-fca347bca61f",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent: [404 Not Found] models/gemini-3-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+                "type": "error",
+                "timestamp": 1768587910684
+              },
+              {
+                "id": "308dc8be-4025-4384-85c2-8be57678177a",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 2.701761983s. [{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.0-flash-exp\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.0-flash-exp\"}},{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\",\"quotaId\":\"GenerateContentInputTokensPerModelPerMinute-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.0-flash-exp\"}}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"2s\"}]",
+                "type": "error",
+                "timestamp": 1768588377224
+              },
+              {
+                "id": "4ed9009e-8f99-4835-825a-d93831fed820",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-tts:generateContent: [404 Not Found] models/gemini-2.5-flash-tts is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+                "type": "error",
+                "timestamp": 1768588541847
+              },
+              {
+                "id": "32a54358-d6d0-453e-9ffb-bea7319ccfe7",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent: [404 Not Found] models/gemini-3-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+                "type": "error",
+                "timestamp": 1768588669876
+              }
+            ],
+            "activeIndex": 4
+          },
+          "status": "error"
+        },
+        {
+          "id": "a2e8166e-4db1-4948-9d9c-458253e876d9",
+          "user": {
+            "versions": [
+              {
+                "id": "78386db3-1154-4cc6-a00f-c008a05530bc",
+                "content": "explain your purpose",
+                "type": "text",
+                "timestamp": 1768636910297
+              },
+              {
+                "id": "1c4f5f46-31db-44f1-95a3-d6057a282c59",
+                "content": "explain your purpose",
+                "type": "text",
+                "timestamp": 1768636965676
+              }
+            ],
+            "activeIndex": 1
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "fc6bc4b5-a2f0-4c11-9730-d25ff422e4d5",
+                "content": "As an AI assistant expert in Business Process Analysis, my purpose is twofold:\n\n1.  **Extract Business Processes:** When you provide a transcript or description of a business process, I will identify the key actors, steps, decisions, and outcomes, and then model it in a structured JSON format.\n2.  **Answer General Questions:** If you have general questions related to business processes, AI, or other topics, I will do my best to provide helpful and informative answers.\n\nMy ultimate goal is to help you understand, document, and potentially optimize business operations by clearly defining their underlying processes.",
+                "type": "text",
+                "timestamp": 1768636910550,
+                "executionDuration": 3121
+              },
+              {
+                "id": "8ca24145-79fc-4529-981f-699c3690077c",
+                "content": "As an expert Business Process Analyst and AI assistant, my purpose is to either extract a business process from your transcript and model it in a structured JSON format, or to answer your general questions helpfully and informatively. When extracting a process, I identify actors, steps, and decision points, providing a clear, actionable model. When answering general questions, I strive to provide accurate and concise information.",
+                "type": "text",
+                "timestamp": 1768636965900,
+                "executionDuration": 3990
+              }
+            ],
+            "activeIndex": 1
+          },
+          "status": "done",
+          "executionDuration": 3990
+        },
+        {
+          "id": "a15f3e2f-9eb4-405a-81b1-608681ef9ed1",
+          "user": {
+            "versions": [
+              {
+                "id": "8b4eceb9-7540-476e-98a9-560b5e8f86d5",
+                "content": "faillen. I don't know who they might. So I just say hello, hello, hello.",
+                "type": "text",
+                "timestamp": 1768637018682
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "374d1511-a66a-49bf-a2b1-177774f3260e",
+                "content": "It seems like you're describing a personal interaction where you're trying to get someone's attention. If you'd like me to extract a business process, please describe it with a clear goal and a sequence of steps. For example, 'When a customer places an order, first we check inventory, then we process payment, and finally, we ship the product.'",
+                "type": "text",
+                "timestamp": 1768637018830,
+                "executionDuration": 2025
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 2025
+        },
+        {
+          "id": "2b09348b-58b0-4150-95c8-1fce8d6fdfe6",
+          "user": {
+            "versions": [
+              {
+                "id": "ec8000f7-6c58-4b0e-ba40-9d8bf6a39d67",
+                "content": "generate credit application process for a bank",
+                "type": "text",
+                "timestamp": 1768637095646
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "80125c2e-31c7-4bf0-b7f7-1a058696ac0f",
+                "content": "{\n  \"process_name\": \"Credit Application Process\",\n  \"actors\": [\n    \"Applicant\",\n    \"Bank Employee\",\n    \"Credit Analyst\",\n    \"Underwriter\",\n    \"Bank System\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"start_1\",\n      \"type\": \"start\",\n      \"actor\": \"Applicant\",\n      \"description\": \"Applicant decides to apply for credit.\",\n      \"next\": [\n        \"action_1\"\n      ]\n    },\n    {\n      \"id\": \"action_1\",\n      \"type\": \"action\",\n      \"actor\": \"Applicant\",\n      \"description\": \"Completes and submits credit application form and required supporting documents.\",\n      \"next\": [\n        \"action_2\"\n      ]\n    },\n    {\n      \"id\": \"action_2\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Employee\",\n      \"description\": \"Receives application, verifies completeness, and inputs data into bank system.\",\n      \"next\": [\n        \"action_3\"\n      ]\n    },\n    {\n      \"id\": \"action_3\",\n      \"type\": \"action\",\n      \"actor\": \"Credit Analyst\",\n      \"description\": \"Performs credit check, assesses creditworthiness, and generates a preliminary score/report.\",\n      \"next\": [\n        \"decision_1\"\n      ]\n    },\n    {\n      \"id\": \"decision_1\",\n      \"type\": \"decision\",\n      \"actor\": \"Underwriter\",\n      \"description\": \"Does the applicant's preliminary credit profile meet minimum eligibility criteria?\",\n      \"next\": [\n        \"action_4_yes\",\n        \"action_5_no\"\n      ]\n    },\n    {\n      \"id\": \"action_4_yes\",\n      \"type\": \"action\",\n      \"actor\": \"Underwriter\",\n      \"description\": \"Conducts detailed financial review, risk assessment, and policy adherence check.\",\n      \"next\": [\n        \"decision_2\"\n      ]\n    },\n    {\n      \"id\": \"action_5_no\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Employee\",\n      \"description\": \"Notifies applicant of initial rejection based on preliminary assessment.\",\n      \"next\": [\n        \"end_1\"\n      ]\n    },\n    {\n      \"id\": \"decision_2\",\n      \"type\": \"decision\",\n      \"actor\": \"Underwriter\",\n      \"description\": \"Approve or deny the application based on full review?\",\n      \"next\": [\n        \"action_6_approve\",\n        \"action_7_deny\"\n      ]\n    },\n    {\n      \"id\": \"action_6_approve\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Employee\",\n      \"description\": \"Prepares and extends a credit offer (e.g., loan terms, credit limit) to the applicant.\",\n      \"next\": [\n        \"decision_3\"\n      ]\n    },\n    {\n      \"id\": \"action_7_deny\",\n      \"type\": \"action\",\n      \"actor\": \"Bank Employee\",\n      \"description\": \"Notifies applicant of final denial with a reason.\",\n      \"next\": [\n        \"end_2\"\n      ]\n    },\n    {\n      \"id\": \"decision_3\",\n      \"type\": \"decision\",\n      \"actor\": \"Applicant\",\n      \"description\": \"Does the applicant accept the credit offer?\",\n      \"next\": [\n        \"action_8_yes\",\n        \"action_9_no\"\n      ]\n    },\n    {\n      \"id\": \"action_8_yes\",\n      \"type\": \"action\",\n      \"actor\": \"Applicant\",\n      \"description\": \"Signs the credit agreement and returns it to the bank.\",\n      \"next\": [\n        \"action_10\"\n      ]\n    },\n    {\n      \"id\": \"action_9_no\",\n      \"type\": \"action\",\n      \"actor\": \"Applicant\",\n      \"description\": \"Declines the credit offer.\",\n      \"next\": [\n        \"end_3\"\n      ]\n    },\n    {\n      \"id\": \"action_10\",\n      \"type\": \"action\",\n      \"actor\": \"Bank System\",\n      \"description\": \"Activates the credit line or disburses funds according to the agreement.\",\n      \"next\": [\n        \"end_4\"\n      ]\n    },\n    {\n      \"id\": \"end_1\",\n      \"type\": \"end\",\n      \"actor\": \"N/A\",\n      \"description\": \"Credit application process ends (Rejected at preliminary stage).\",\n      \"next\": []\n    },\n    {\n      \"id\": \"end_2\",\n      \"type\": \"end\",\n      \"actor\": \"N/A\",\n      \"description\": \"Credit application process ends (Denied after full review).\",\n      \"next\": []\n    },\n    {\n      \"id\": \"end_3\",\n      \"type\": \"end\",\n      \"actor\": \"N/A\",\n      \"description\": \"Credit application process ends (Offer declined by applicant).\",\n      \"next\": []\n    },\n    {\n      \"id\": \"end_4\",\n      \"type\": \"end\",\n      \"actor\": \"N/A\",\n      \"description\": \"Credit application process ends (Credit activated/funds disbursed).\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768637095825,
+                "executionDuration": 12790
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 12790
+        },
+        {
+          "id": "77e14ea9-f560-485c-9ccf-5978bdb1a4c9",
+          "user": {
+            "versions": [
+              {
+                "id": "ae1ab8a6-9c7a-4312-96c4-e2113225c72a",
+                "content": "generate a process for a bank base on these engine rules: I am going to give you all the business rules & statuses that i am aware of, i want you to create the decision table: 1. Trigger 2. Compliance Status 3. Product Type 4. Product Status 5. Balance Status 6. Block Status Trigger Routes Product Routes Trigger_ID Trigger_Type Trigger_Rules Compliance Status ID Compliance Status Compliance Status Rule Product Type ID Product Type Product Type Rule Product Status ID Product Status Product Status Rule Balance Status ID Balance Status Balance Status Rule Block Status ID Block Status Block Status Rule Trigger_ID Trigger_Type Compliance Status ID Compliance Status Product_Type_ID Product_Type Product_Status ID Product_Status 1-AML AML 2-HEALTHY HEALTHY 3-BUSINESS_TRANSACT BUSINESS_TRANSACT 4-ACTIVE ACTIVE 5-POSITIVE_DB POSITIVE_DB 6-STOP.50 Suspicious and unconfirmed fraudulent account Account is stopped.No Credits and Debits allowed. T.AML AML CS.ASP AML_SUSPECT PT.BTR BUSINESS_TRANSACT PS.ACT ACTIVE 1-FRD FRAUD a. Fraud is triggered when the fraud team receives an eamail claiming fraud on their dedicated email adress. b. A case is created in Salesforce. c. i) The fraud team investigates this & populates the Fraud Terminations Template, ii) during which the related accounts are checked on BaNCS and a STOP50 is placed iii) the prescribed termination dates (+3 days) are noted for each product. iv) A decision is made & documented whether funds are availble, the amount & whether it will be Re-imbursed, along with v) whether there are outstanding funds to be collected. d. If fraud require related party checks or statement monitoring for further investigation, this will be routed to AML. e.) Complex cases are deliberated weekly in a Fraud Forum where decisions are made & notated. f. i) Fraud then obtains Two signatures from Fraud managers on the template, along with one signature from an AML,ii) if the Fraud suspect is cleared the stop50 must be lifted, if found guilty a stop 73 must be placed. g.(Product Routing Rules) i) The termination notice(es) is/are routed to the account maintenance team if a Transact Account, ii) Forex account maintenance if Forex, iii) Credit & Collections & Legalif Credit, iv) Merchant Services if Merchant Account, v) Rental Finance if Rental Finance Account, & vi) If TPMM Account, Route to TPMM 2-ODD_NON_COMPLY ODD_NON_COMPLY 3-BUSINESS_CREDIT BUSINESS_CREDIT 4-INACTIVE INACTIVE Apply Dormancy Classifications to each product, then trigger standard dormancy account termination process a 5-NEGATIVE_DB NEGATIVE_DB a. Negative Debit Balances less than R2,000 wil be writte off. b. Between R2,000 & R10,000 routed to Internal Collections. c. Greater than R10,000 to External Debt Collections. 6-STOP.73 Confirmed fraudulent account Account is stopped, No Credits and Debits allowed CS.ACL AML_CLEARED PS.INA INACTIVE 1-ODD ODD 2-AML_NON_COMLY AML_NON_COMLY 3-BUSINESS_INVEST BUSINESS_INVEST 5-POSITIVE_CB POSITIVE_CB a.Funds must be returned to Account Holder. CS.ANC AML_NON_COMLY PS.BLK BLOCKED 1-RISK RISK_APPETITE 2-FRAUD_NON_COMPLY FRAUD_NON_COMPLY 3-BUSINESS_FOREX BUSINESS_FOREX 5-NEGATIVE_CB NEGATIVE_CB a. Negative Credit Balances less than R2,000 wil be writte off. b. Between R2,000 & R10,000 routed to Internal Collections. c. Greater than R10,000 to External Debt Collections. CS.DNDB DNDB PS.POSDB POSITIVE_DB 1-DECEASED DECEASED 2-DNDB DNDB 3-BUSINESS_MERCHANT BUSINESS_MERCHANT T.FRD FRAUD CS.FSP FRAUD_SUSPECT PS.NEGDB NEGATIVE_DB 2-AML_SUSPECT AML_SUSPECT 3-BUSINESS_RENTAL BUSINESS_RENTAL CS.FCL FRAUD_CLEARED PT.BCR BUSINESS_CREDIT PS.ACT ACTIVE 2-FRAUD_SUSPECT FRAUD_SUSPECT 3-BUSINESS_TPMM BUSINESS_TPMM CS.FNC FRAUD_NON_COMPLY PS.INA INACTIVE 2-ODD_RISK ODD_RISK CS.DNDB DNDB PS.BLK BLOCKED 2-AML_CLEARED AML_CLEARED T.DOR DORMANCY CS.DOR DORMANT PS.POSCB POSITIVE_CB 2-FRAUD_CLEARED FRAUD_CLEARED T.ODD ODD CS.OSP ODD_RISK PS.NEGCB NEGATIVE_CB 2-ODD_REMEDIATED ODD_REMEDIATED CS.ORM ODD_REMEDIATED PT.BIN BUSINESS_INVEST PS.ACT ACTIVE CS.ONC ODD_NON_COMPLY PS.INA INACTIVE PS.BLK BLOCKED PT.BFX BUSINESS_FOREX PS.ACT ACTIVE PS.INA INACTIVE PS.BLK BLOCKED PT.BMS BUSINESS_MERCHANT PS.ACT ACTIVE PS.INA INACTIVE PS.BLK BLOCKED PT.BRF BUSINESS_RENTAL PS.ACT ACTIVE PS.INA INACTIVE PS.BLK",
+                "type": "text",
+                "timestamp": 1768637555714
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "3c30b6fc-da88-4770-8f54-108832259ea3",
+                "content": "{\n  \"process_name\": \"Fraud Case Handling Process\",\n  \"actors\": [\n    \"Fraud Team\",\n    \"AML\",\n    \"Fraud Forum\",\n    \"Fraud Managers\",\n    \"Account Maintenance Team\",\n    \"Forex Account Maintenance\",\n    \"Credit & Collections & Legal\",\n    \"Merchant Services\",\n    \"Rental Finance\",\n    \"TPMM\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"S1\",\n      \"type\": \"start\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Fraud Email Received\",\n      \"next\": [\n        \"A1\"\n      ]\n    },\n    {\n      \"id\": \"A1\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Create Case in Salesforce\",\n      \"next\": [\n        \"A2\"\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Investigate Case & Populate Fraud Terminations Template (includes checking BaNCS, placing STOP50, noting termination dates, documenting funds)\",\n      \"next\": [\n        \"D1\"\n      ]\n    },\n    {\n      \"id\": \"D1\",\n      \"type\": \"decision\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Requires AML Related Party Checks or Statement Monitoring for Further Investigation?\",\n      \"next\": [\n        \"A3\",\n        \"D2\"\n      ]\n    },\n    {\n      \"id\": \"A3\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route Case to AML for Investigation\",\n      \"next\": [\n        \"D2\"\n      ]\n    },\n    {\n      \"id\": \"D2\",\n      \"type\": \"decision\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Is Case Complex?\",\n      \"next\": [\n        \"A4\",\n        \"A5\"\n      ]\n    },\n    {\n      \"id\": \"A4\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Forum\",\n      \"description\": \"Deliberate Case in Weekly Fraud Forum\",\n      \"next\": [\n        \"A5\"\n      ]\n    },\n    {\n      \"id\": \"A5\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Obtain Signatures (Two Fraud Managers, One AML)\",\n      \"next\": [\n        \"D3\"\n      ]\n    },\n    {\n      \"id\": \"D3\",\n      \"type\": \"decision\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Fraud Suspect Status?\",\n      \"next\": [\n        \"A6\",\n        \"A7\"\n      ]\n    },\n    {\n      \"id\": \"A6\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Suspect Cleared: Lift STOP50\",\n      \"next\": [\n        \"D4\"\n      ]\n    },\n    {\n      \"id\": \"A7\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Suspect Guilty: Place STOP73\",\n      \"next\": [\n        \"D4\"\n      ]\n    },\n    {\n      \"id\": \"D4\",\n      \"type\": \"decision\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Determine Product Type for Termination Notice Routing\",\n      \"next\": [\n        \"A8\",\n        \"A9\",\n        \"A10\",\n        \"A11\",\n        \"A12\",\n        \"A13\"\n      ]\n    },\n    {\n      \"id\": \"A8\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to Account Maintenance Team (Transact Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"A9\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to Forex Account Maintenance (Forex Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"A10\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to Credit & Collections & Legal (Credit Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"A11\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to Merchant Services (Merchant Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"A12\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to Rental Finance (Rental Finance Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"A13\",\n      \"type\": \"action\",\n      \"actor\": \"Fraud Team\",\n      \"description\": \"Route to TPMM (TPMM Account)\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"E1\",\n      \"type\": \"end\",\n      \"actor\": \"N/A\",\n      \"description\": \"Fraud Case Process Completed\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768637555978,
+                "executionDuration": 21121
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 21121
+        },
+        {
+          "id": "c388693a-8952-43b1-8556-abea3a280dcd",
+          "user": {
+            "versions": [
+              {
+                "id": "c14df05c-cf25-4b35-891a-3406c8b71f4a",
+                "content": "generate a design making process for a point of sale system in a restaurant with 3 starter options,  mains and 2 desserts.",
+                "type": "text",
+                "timestamp": 1768638248502
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "fc1f314a-9bd0-4206-8cd6-ea52dd6ee68d",
+                "content": "{\n  \"process_name\": \"Restaurant POS Order & Payment Flow\",\n  \"actors\": [\n    \"Customer\",\n    \"Waitstaff\",\n    \"POS System\",\n    \"Kitchen\"\n  ],\n  \"steps\": [\n    {\n      \"id\": \"S1\",\n      \"type\": \"start\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer is seated and ready to order.\",\n      \"next\": [\n        \"W1\"\n      ]\n    },\n    {\n      \"id\": \"W1\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Takes Customer's order for Starters, Mains, and optionally Desserts (3 Starters, multiple Mains, 2 Desserts available).\",\n      \"next\": [\n        \"W2\"\n      ]\n    },\n    {\n      \"id\": \"W2\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Enters all chosen items into the POS System.\",\n      \"next\": [\n        \"D1\"\n      ]\n    },\n    {\n      \"id\": \"D1\",\n      \"type\": \"decision\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Is the order confirmed by Customer and ready to be sent to the Kitchen?\",\n      \"next\": [\n        \"P1\",\n        \"W3\"\n      ]\n    },\n    {\n      \"id\": \"W3\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Makes necessary modifications to the order in the POS System (e.g., adding/removing items, changing quantities).\",\n      \"next\": [\n        \"D1\"\n      ]\n    },\n    {\n      \"id\": \"P1\",\n      \"type\": \"action\",\n      \"actor\": \"POS System\",\n      \"description\": \"Sends the confirmed order details to the Kitchen Display System (KDS) or printer.\",\n      \"next\": [\n        \"K1\"\n      ]\n    },\n    {\n      \"id\": \"K1\",\n      \"type\": \"action\",\n      \"actor\": \"Kitchen\",\n      \"description\": \"Prepares the food items according to the order.\",\n      \"next\": [\n        \"W4\"\n      ]\n    },\n    {\n      \"id\": \"W4\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Serves prepared courses to the Customer as they are ready.\",\n      \"next\": [\n        \"W5\"\n      ]\n    },\n    {\n      \"id\": \"W5\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Generates the bill from the POS System upon Customer's request.\",\n      \"next\": [\n        \"W6\"\n      ]\n    },\n    {\n      \"id\": \"W6\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Presents the bill to the Customer.\",\n      \"next\": [\n        \"C1\"\n      ]\n    },\n    {\n      \"id\": \"C1\",\n      \"type\": \"action\",\n      \"actor\": \"Customer\",\n      \"description\": \"Provides payment for the bill.\",\n      \"next\": [\n        \"W7\"\n      ]\n    },\n    {\n      \"id\": \"W7\",\n      \"type\": \"action\",\n      \"actor\": \"Waitstaff\",\n      \"description\": \"Processes payment through the POS System (e.g., cash, card).\",\n      \"next\": [\n        \"P2\"\n      ]\n    },\n    {\n      \"id\": \"P2\",\n      \"type\": \"action\",\n      \"actor\": \"POS System\",\n      \"description\": \"Records the transaction, updates inventory, and closes the order.\",\n      \"next\": [\n        \"E1\"\n      ]\n    },\n    {\n      \"id\": \"E1\",\n      \"type\": \"end\",\n      \"actor\": \"Customer\",\n      \"description\": \"Customer leaves the restaurant.\",\n      \"next\": []\n    }\n  ]\n}",
+                "type": "map",
+                "timestamp": 1768638248774,
+                "executionDuration": 19928
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "done",
+          "executionDuration": 19928
+        }
+      ]
+    },
+    {
+      "id": "fb6caf04-bc55-4034-8149-b2776179b201",
+      "createdAt": 1768582135037,
+      "title": "New Chat",
+      "transcript": "Hello\nHello",
+      "model": null,
+      "turns": [
+        {
+          "id": "41dc9b32-a9db-4798-af61-24501cc2440b",
+          "user": {
+            "versions": [
+              {
+                "id": "a0bb31df-889a-4cc0-a86c-6ea7bc35dbe4",
+                "content": "Hello\nHello",
+                "type": "text",
+                "timestamp": 1768582135038
+              }
+            ],
+            "activeIndex": 0
+          },
+          "assistant": {
+            "versions": [
+              {
+                "id": "9e715154-1c78-473f-935e-1480dc2491e7",
+                "content": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\nPlease retry in 4.604572484s. [{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-2.5-flash-lite\"},\"quotaValue\":\"20\"}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"4s\"}]",
+                "type": "error",
+                "timestamp": 1768582135378
+              }
+            ],
+            "activeIndex": 0
+          },
+          "status": "error"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "9304885d-a62b-4df5-bd42-2dc153e4dac6",
+      "name": "Bank Onboarding",
+      "color": "#ef4444",
+      "createdAt": 1768893765801
+    }
+  ]
+}

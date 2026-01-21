@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Offboarding Process Variants</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: #0f172a;
+            color: #e5e7eb;
+        }
+
+        .app {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        select {
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid #6b7280;
+            background: #020617;
+            color: #e5e7eb;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        #diagram {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: #020617;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            overflow: auto;
+        }
+
+        #transcriptWrapper {
+            margin-bottom: 20px;
+        }
+
+        #transcriptInput {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #6b7280;
+            background: #020617;
+            color: #e5e7eb;
+            font-family: inherit;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+
+        #analyzeBtn {
+            padding: 8px 16px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #analyzeBtn:hover {
+            background: #2563eb;
+        }
+
+        #analyzeBtn:disabled {
+            background: #64748b;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Bank Offboarding – Scenario Visualiser</h1>
+
+        <div id="transcriptWrapper">
+            <textarea id="transcriptInput" placeholder="Paste business process transcript here..."></textarea>
+            <button id="analyzeBtn">Analyze with AI</button>
+        </div>
+
+        <div class="controls">
+            <label>
+                Scenario:
+                <select id="scenarioSelect">
+                    <option value="S1">S1 – AML Suspect → AML Cleared (no offboarding)</option>
+                    <option value="S2">S2 – AML Non-Compliant (Profile + simple related parties)</option>
+                    <option value="S3">S3 – Fraud Cleared (accounts only)</option>
+                    <option value="S4">S4 – Fraud Non-Comply (Profile + simple related parties)</option>
+                    <option value="S5">S5 – ODD Non-Comply (accounts only)</option>
+                    <option value="S6">S6 – ODD Remediated (no offboarding)</option>
+                    <option value="S7">S7 – Dormancy Bot (auto-close accounts)</option>
+                </select>
+            </label>
+            <span class="hint">
+                Grey = all possible flows. Highlighted = selected scenario path.
+            </span>
+        </div>
+
+        <div id="diagram" class="mermaid"></div>
+    </div>
+
+    <script>
+        // Mermaid init
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: "neutral"
+        });
+
+        // ---- MODEL ----
+        // DYNAMIC GRAPH from AI
+        let nodes = [];
+        let edges = [];
+
+        function renderScenario(selectedScenario) {
+            let def = "graph LR\n";
+
+            // Layout hint (optional): left-to-right
+            def += "  classDef active fill:#0f172a,stroke:#38bdf8,stroke-width:3px,color:#e5e7eb;\n";
+            def += "  classDef inactive fill:#020617,stroke:#4b5563,stroke-width:1px,color:#9ca3af;\n";
+
+            // Nodes
+            nodes.forEach(n => {
+                def += `  ${n.id}["${n.label.replace(/\n/g, "<br/>")}"]\n`;
+            });
+
+            // Edges
+            edges.forEach((e, idx) => {
+                def += `  ${e.from}-->${e.to}\n`;
+            });
+
+            // Node classes
+            nodes.forEach(n => {
+                const isActive = n.scenarios.includes(selectedScenario);
+                def += `  class ${n.id} ${isActive ? "active" : "inactive"};\n`;
+            });
+
+            // Edge styles via linkStyle index
+            edges.forEach((e, idx) => {
+                const isActive = e.scenarios.includes(selectedScenario);
+                if (isActive) {
+                    def += `  linkStyle ${idx} stroke:#38bdf8,stroke-width:3px;\n`;
+                } else {
+                    def += `  linkStyle ${idx} stroke:#4b5563,stroke-width:1px;\n`;
+                }
+            });
+
+            const container = document.getElementById("diagram");
+            container.removeAttribute("data-processed"); // needed for re-render
+            container.innerHTML = def;
+            mermaid.run({ nodes: [container] });
+        }
+
+        async function loadFromTranscript() {
+            const transcript = document.getElementById("transcriptInput").value;
+            const btn = document.getElementById("analyzeBtn");
+
+            if (!transcript) return alert("Please enter a transcript first!");
+
+            btn.disabled = true;
+            btn.textContent = "Analyzing...";
+
+            try {
+                const res = await fetch("http://localhost:3000/api/process/analyze", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ transcript })
+                });
+
+                if (!res.ok) throw new Error(await res.text());
+
+                const data = await res.json();
+                nodes = data.nodes;
+                edges = data.edges;
+
+                // Update scenarios dropdown
+                updateScenarioDropdown();
+
+                // Render first scenario found or default
+                const select = document.getElementById("scenarioSelect");
+                renderScenario(select.value);
+
+            } catch (error) {
+                console.error(error);
+                alert("Analysis failed: " + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Analyze with AI";
+            }
+        }
+
+        function updateScenarioDropdown() {
+            const select = document.getElementById("scenarioSelect");
+            // Collect all unique scenarios from nodes
+            const allScenarios = new Set();
+            nodes.forEach(n => {
+                if (n.scenarios) n.scenarios.forEach(s => allScenarios.add(s));
+            });
+
+            // Sort and populate
+            const sorted = Array.from(allScenarios).sort();
+            select.innerHTML = sorted.map(s => `<option value="${s}">${s}</option>`).join("");
+        }
+
+        window.addEventListener("load", () => {
+            const select = document.getElementById("scenarioSelect");
+            const btn = document.getElementById("analyzeBtn");
+
+            select.addEventListener("change", (e) => {
+                renderScenario(e.target.value);
+            });
+
+            btn.addEventListener("click", loadFromTranscript);
+
+            // Initial render if we had data, currently empty
+            if (nodes.length > 0) renderScenario(select.value);
+        });
+    </script>
+</body>
+
+</html>

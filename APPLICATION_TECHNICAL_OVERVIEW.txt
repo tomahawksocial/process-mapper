@@ -1,0 +1,118 @@
+APPLICATION TECHNICAL OVERVIEW
+
+1. HIGH-LEVEL APPLICATION SUMMARY
+   - Purpose: An AI-powered Business Process Management (BPM) tool that converts unstructured audio or text into structured process maps and visual flowcharts.
+   - Target Audience: Business Analysts, Process Architects, and Consultants.
+   - Core Solution: Automates the tedious task of documenting business processes by listening to meetings or reading transcripts and instantly generating editable diagrams.
+   - Primary Differentiator: Uses multimodal AI (Gemini 2.5) to handle both Transcription AND Process Extraction in a single pipeline, exporting directly to Draw.io formats.
+
+2. ARCHITECTURE OVERVIEW
+   - Type: Monolithic Web Application (Next.js App Router).
+   - Frontend: React 19, Tailwind CSS, Framer Motion, Zustand (State).
+   - Backend: Next.js API Routes (Serverless functions).
+   - Runtime: Node.js (v20+ implied).
+   - AI Engine: Google Gemini 2.5 Flash (via Google Generative AI SDK).
+   - Hosting Assumption: Vercel or any Node.js compatible container.
+   - Database: Currently uses a flat-file JSON persistence layer (See Section 11: Risks).
+
+3. FUNCTIONAL MAP
+
+   [System: Chat & Interaction]
+   - submitUserMessage (useProcessStore.ts)
+     - Purpose: Handles user input (text) and initiates the AI analysis loop.
+     - Trigger: User clicks send.
+     - Side Effects: Updates local history, calls /api/process.
+
+   - regenerateTurn / editTurn (useProcessStore.ts)
+     - Purpose: Allows refining specific AI responses without restarting the chat.
+     - Trigger: User clicks "Regenerate" or Edits their previous message.
+     - Side Effects: Forks conversation history, calls /api/process.
+
+   - uploadAudio (useProcessStore.ts -> /api/transcribe)
+     - Purpose: Converts uploaded audio files into text transcripts.
+     - Trigger: User uploads file or records via microphone.
+     - Output: Text string (transcript) which is auto-fed into the Chat.
+
+   [System: Process Mapping]
+   - generateResponse (useProcessStore.ts -> /api/process)
+     - Purpose: Core logic loop. Sends text to AI -> Receives JSON Map -> Updates UI.
+     - Inputs: User text or Transcript.
+     - Outputs: Structured Process Model (JSON) + Explanation.
+
+   [System: Data Management]
+   - loadHistory / saveSession (useProcessStore.ts -> /api/history)
+     - Purpose: Persists chat sessions and process maps.
+     - Storage: Local filesystem (chat_history.json).
+
+   [System: UI/Layout]
+   - NavRail / AppShell
+     - Purpose: Manages navigation between Chat, To-Do (Kanban), and Projects.
+     - State: Fully client-side state (Zustand) synced with backend.
+
+4. DECISION-MAKING & LOGIC FLOW SYSTEMS
+
+   - AI Heuristics (src/app/api/process/route.ts):
+     - The "Brain" is a strict System Prompt telling Gemini to act as a "Business Process Analyst".
+     - Logic: It decides whether a user input is a "General Question" vs. a "Process Description".
+     - Output: STRICT JSON format enforcing `{ type: "process" | "general", ... }`.
+     - Importance: Prevents the tool from trying to draw a diagram for "Hello how are you?", ensuring a natural chat experience alongside mapping.
+
+   - State Management (useProcessStore.ts):
+     - Uses a "Version Stack" pattern for chat history. Every message (User or Assistant) handles multiple versions (edits/regenerations).
+     - Logic: Determines which version is "Active" (displayed) but keeps the history of previous attempts.
+
+5. PROTOCOLS, PATTERNS & STANDARDS
+
+   - API Pattern: REST-ish (Next.js API Routes).
+   - State Management: Global Store (Zustand) with direct fetch calls inside actions (Thunk-like pattern).
+   - Communications: Standard HTTP 1.1/2 (fetch). No WebSockets used (Polling/Request-Response only).
+   - Code Standard: TypeScript strict mode enabled.
+   - Styling: Utility-first (Tailwind CSS) with Shadcn/UI-inspired component structure.
+
+6. DATA HANDLING & PERSISTENCE
+
+   - Current Storage: Local File System (JSON).
+     - Detected `readDb` / `writeDb` utilities interfacing with a local `chat_history.json`.
+     - Data Flow: Frontend -> API Route -> File System.
+   - Data Ownership: Single-user model. Data resides on the server disk.
+   - Compliance Warning: Storing business process audio/transcripts in plain text on the server filesystem is a high security/privacy risk.
+
+7. AI & AUTOMATION SYSTEMS
+
+   - Engine: Google Gemini 2.5 Flash.
+   - Transcription: The system sends raw audio binary directly to Gemini (multimodal capability), bypassing traditional speech-to-text APIs like Whisper.
+   - Determinism: Low. The prompt requests "Strict JSON", but LLM outputs can occasionally vary or break schema (though error handling exists).
+
+8. EXTERNAL DEPENDENCIES & INTEGRATIONS
+
+   - Google Generative AI (@google/generative-ai): CRITICAL. The entire core value proposition relies on this API.
+   - Firebase (firebase/app, auth, firestore): Installed but currently UNUSED or bypassed in favor of local file storage. (See Red Flags).
+   - dnd-kit (@dnd-kit/*): Used for heavy UI interactions (Kanban, Drag-and-Drop Sidebar).
+
+9. SECURITY & RISK POSTURE
+
+   - Auth: MISSING. No active login barrier found in middleware or layout. The app appears to feature a stubbed "Pro User" profile (Mock data).
+   - Secrets: API Keys (Google, Firebase) seem to be loaded via Environment Variables (`process.env`), which is standard practice.
+   - Injection Risk: User input is sent directly to AI. Prompt Injection attacks could theoretically manipulate the nature of the extracted process map.
+
+10. SCALABILITY & MAINTAINABILITY
+
+   - Scalability: EXTREMELY LOW.
+     - The filesystem database (`chat_history.json`) prevents horizontal scaling. You cannot run this on multiple server instances (e.g., standard Vercel/AWS Lambda scale-out) without data loss or conflicts.
+   - Maintainability: HIGH.
+     - Code is clean, modern, and strongly typed.
+     - Component structure is modular.
+     - "Spaghetti code" is minimal; logic is well-encapsulated in the Store.
+
+11. TECHNICAL RISKS & RED FLAGS (DO NOT OMIT)
+
+   - [CRITICAL] Fake Database: The application runs on a local JSON file (`lib/db.ts`). It is NOT production-ready. It forces the app to be single-instance and single-user.
+   - [CRITICAL] No Authentication: Anyone with access to the URL can read all chat history and processes.
+   - [HIGH] Unused Dependencies: Firebase is installed and configured but effectively bypassed. This implies incomplete migration or abandoned architectural decisions.
+   - [MEDIUM] Vendor Lock-in: Tightly coupled to Google Gemini's specific multimodal API features (Audio handling). Switching to OpenAI/Claude would require rebuilding the transcription pipeline.
+
+12. EXPANSION & MONETIZATION READINESS
+
+   - Ease of Features: High. The codebase is flexible. Adding "Export to Visio" or "JIRA Integration" would be straightforward given the structured data model.
+   - Multi-tenant Readiness: Low. Requires a complete backend rewrite (Replace JSON DB with Postgres/Firestore + Implement Auth) to support multiple customer accounts.
+   - Monetization: The code supports "Usage Tracking" logic (token counts/time), which could be hooked into a billing system easily.
